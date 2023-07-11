@@ -75,7 +75,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: `http://api.mesto.anton.glazunov.nomoredomains.work`,
+  baseUrl: `https://api.mesto.anton.glazunov.nomoredomains.work`,
   headers: {
     authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
     'Content-Type': 'application/json',
