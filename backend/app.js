@@ -1,6 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 import express from 'express';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cors from 'cors';
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import mongoose from 'mongoose';
@@ -21,6 +24,9 @@ const limiter = rateLimit({
 
 const app = express();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 mongoose.connect(DB_URL, {
   useNewUrlParser: true,
 });
@@ -28,6 +34,8 @@ mongoose.connect(DB_URL, {
 app.use(helmet());
 
 app.use(limiter);
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
 
