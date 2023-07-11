@@ -75,7 +75,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: `http://localhost:3000`,
+  baseUrl: `http://mesto.anton.glazunov.nomoreparties.sbs`,
   headers: {
     authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
     'Content-Type': 'application/json',

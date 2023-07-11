@@ -45,7 +45,7 @@ class ApiAuth {
 }
 
 export const apiAuth = new ApiAuth({
-  baseUrl: `http://localhost:3000`,
+  baseUrl: `http://mesto.anton.glazunov.nomoreparties.sbs`,
   headers: {
     'Content-Type': 'application/json',
   },
