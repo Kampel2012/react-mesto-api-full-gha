@@ -10,7 +10,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.252.138.114
+IP 84.252.138.114
 
 Frontend https://mesto.anton.glazunov.nomoreparties.sbs
 
