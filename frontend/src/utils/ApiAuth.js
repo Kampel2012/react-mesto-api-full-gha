@@ -42,7 +42,6 @@ class ApiAuth {
       headers: { ...this.headers, Authorization: `Bearer ${token}` },
     });
   }
-
 }
 
 export const apiAuth = new ApiAuth({

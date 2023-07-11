@@ -1,4 +1,5 @@
 import express from 'express';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
@@ -9,8 +10,7 @@ import { NotFoundError } from './errors/errors.js';
 import handleError from './middlewares/handeError.js';
 import { requestLogger, errorLogger } from './middlewares/logger.js';
 
-const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } =
-  process.env;
+const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000,
