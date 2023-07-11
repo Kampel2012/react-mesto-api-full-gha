@@ -44,7 +44,7 @@ app.use(requestLogger);
 
 app.use(cors({ origin: true, credentials: true }));
 
-app.use('/api', routes);
+app.use(routes);
 
 app.use('*', () => {
   throw new NotFoundError('Данная страница не найдена');

@@ -45,7 +45,7 @@ class ApiAuth {
 }
 
 export const apiAuth = new ApiAuth({
-  baseUrl: `http://mesto.anton.glazunov.nomoreparties.sbs/api`,
+  baseUrl: `http://api.mesto.anton.glazunov.nomoredomains.work`,
   headers: {
     'Content-Type': 'application/json',
   },
