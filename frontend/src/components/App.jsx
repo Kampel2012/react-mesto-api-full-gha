@@ -42,8 +42,8 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    checkAuth();
-  }, [isAuth]);
+    (async () => await checkAuth())();
+  }, []);
 
   async function checkAuth() {
     if (!localStorage.getItem('TOKEN')) return;
