@@ -1,7 +1,6 @@
 class Api {
-  constructor({ baseUrl, headers }) {
+  constructor({ baseUrl }) {
     this.baseUrl = baseUrl;
-    this.headers = headers;
   }
 
   _checkResponse(res) {
@@ -15,20 +14,29 @@ class Api {
 
   getUserInfoData() {
     return this._request(`${this.baseUrl}/users/me`, {
-      headers: this.headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+        'Content-Type': 'application/json',
+      },
     });
   }
 
   getInitialCards() {
     return this._request(`${this.baseUrl}/cards`, {
-      headers: this.headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+        'Content-Type': 'application/json',
+      },
     });
   }
 
   editProfile({ name, about }) {
     return this._request(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this.headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         name: name,
         about: about,
@@ -39,7 +47,10 @@ class Api {
   addNewCard({ name, link }) {
     return this._request(`${this.baseUrl}/cards`, {
       method: 'POST',
-      headers: this.headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         name: name,
         link: link,
@@ -50,21 +61,30 @@ class Api {
   deleteCard(id) {
     return this._request(`${this.baseUrl}/cards/${id}`, {
       method: 'DELETE',
-      headers: this.headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+        'Content-Type': 'application/json',
+      },
     });
   }
 
   changeLikeCardStatus(id, state) {
     return this._request(`${this.baseUrl}/cards/${id}/likes`, {
       method: state,
-      headers: this.headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+        'Content-Type': 'application/json',
+      },
     });
   }
 
   editProfileAvatar(link) {
     return this._request(`${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this.headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         avatar: link,
       }),
@@ -76,8 +96,4 @@ class Api {
 
 export const api = new Api({
   baseUrl: `https://api.mesto.anton.glazunov.nomoredomains.work`,
-  headers: {
-    authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
-    'Content-Type': 'application/json',
-  },
 });

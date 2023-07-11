@@ -25,8 +25,6 @@ class ApiAuth {
   }
 
   signin({ email, password }) {
-    console.log(`${this.baseUrl}/signin`);
-
     return this._request(`${this.baseUrl}/signin`, {
       method: 'POST',
       headers: this.headers,
