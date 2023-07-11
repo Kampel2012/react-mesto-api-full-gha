@@ -25,12 +25,14 @@ class ApiAuth {
   }
 
   signin({ email, password }) {
+    console.log(`${this.baseUrl}/signin`);
+
     return this._request(`${this.baseUrl}/signin`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify({
-        password: password,
         email: email,
+        password: password,
       }),
     });
   }
@@ -45,7 +47,7 @@ class ApiAuth {
 }
 
 export const apiAuth = new ApiAuth({
-  baseUrl: `https://auth.nomoreparties.co`,
+  baseUrl: `http://localhost:3000`,
   headers: {
     'Content-Type': 'application/json',
   },

@@ -49,8 +49,8 @@ function App() {
     if (!localStorage.getItem('TOKEN')) return;
     try {
       const res = await apiAuth.checkToken(localStorage.getItem('TOKEN'));
-      if (res.data) {
-        setCurrentUserEmail(res.data.email);
+      if (res) {
+        setCurrentUserEmail(res.email);
         setIsAuth(true);
       }
     } catch (error) {
@@ -60,7 +60,7 @@ function App() {
   }
 
   function onLogin(token) {
-    localStorage.setItem('TOKEN', token.token);
+    localStorage.setItem('TOKEN', token.jwt);
     setIsAuth(true);
   }
 
@@ -130,7 +130,7 @@ function App() {
   }
 
   function handleCardLike(likes, _id) {
-    const isLiked = likes.some((i) => i._id === currentUser._id);
+    const isLiked = likes.some((i) => i === currentUser._id);
     const method = isLiked ? 'DELETE' : 'PUT';
     api
       .changeLikeCardStatus(_id, method)
