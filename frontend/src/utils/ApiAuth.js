@@ -43,7 +43,6 @@ class ApiAuth {
     });
   }
 
-  // другие методы работы с API
 }
 
 export const apiAuth = new ApiAuth({
