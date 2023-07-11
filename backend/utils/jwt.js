@@ -8,11 +8,11 @@ if (SECRET_KEY === SECRET_KEY_DEV) {
 }
 
 export function generateToken(_id) {
-  return jwt.sign({ _id }, SECRET_KEY, {
+  return jwt.sign({ _id }, SECRET_KEY || SECRET_KEY_DEV, {
     expiresIn: '7d',
   });
 }
 
 export function verifyToken(token) {
-  return jwt.verify(token, SECRET_KEY);
+  return jwt.verify(token, SECRET_KEY || SECRET_KEY_DEV);
 }
