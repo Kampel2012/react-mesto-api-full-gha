@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken';
 
-const { NODE_ENV, SECRET_KEY, SECRET_KEY_DEV } = process.env;
+const { NODE_ENV, SECRET_KEY } = process.env;
+
+const SECRET_KEY_DEV = 'dev-secret';
 
 if (SECRET_KEY === SECRET_KEY_DEV) {
   console.warn('Надо исправить. В продакшне используется тот же секретный ключ, что и в режиме разработки.');
