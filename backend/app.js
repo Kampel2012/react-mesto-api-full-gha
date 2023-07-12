@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import express from 'express';
 // eslint-disable-next-line import/no-extraneous-dependencies
+import 'dotenv/config';
 import cors from 'cors';
 /* import { fileURLToPath } from 'url';
 import path from 'path'; */
@@ -43,6 +44,12 @@ app.use(express.json());
 app.use(requestLogger);
 
 app.use(cors({ origin: true, credentials: true }));
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+}); //! удалить позже
 
 app.use(routes);
 
